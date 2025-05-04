@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Journaling - Wellness Buddy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.jpeg" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #f3f4f6;
+    }
+    .w3-container {
+      text-align: center;
+      padding: 40px;
+    }
+    .mood-selection {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .mood-selection button {
+      font-size: 30px;
+      margin: 0 10px;
+      background-color: #f1f1f1;
+      padding: 10px 20px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+    }
+    .mood-selection button:hover {
+      background-color: #ddd;
+    }
+    .journal-input {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      margin: auto;
+      text-align: left;
+    }
+    .journal-input textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: none;
+    }
+    .journal-input button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .journal-input button:hover {
+      background-color: #45a049;
+    }
+    .mood-display {
+      margin-top: 10px;
+      font-size: 24px;
+      color: #4CAF50;
+    }
+    /* Story Buttons Styling */
+    .story-buttons {
+      margin-top: 30px;
+    }
+    .story-buttons button {
+      background-color: #ffcc00;
+      color: white;
+      font-size: 18px;
+      padding: 12px 24px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .story-buttons button:hover {
+      background-color: #ff9933;
+    }
+    .story-buttons button:active {
+      background-color: #cc7a00;
+    }
+    /* Bottom Navigator */
+    .w3-bar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="w3-container">
+    <h2 class="w3-text-teal">Journaling</h2>
+    <p>Write your thoughts and select an emoji to express your mood today!</p>
+
+    <!-- Emoji Selection -->
+    <div class="mood-selection">
+      <button onclick="setEmoji('😊')">😊</button>
+      <button onclick="setEmoji('😔')">😔</button>
+      <button onclick="setEmoji('😴')">😴</button>
+      <button onclick="setEmoji('😎')">😎</button>
+    </div>
+
+    <!-- Display selected emoji -->
+    <div class="mood-display" id="mood-display">
+      <!-- Display selected emoji here -->
+    </div>
+
+    <!-- Journal Input -->
+    <div class="journal-input">
+      <h3>Journal Your Thoughts</h3>
+      <textarea id="journal-entry" placeholder="Write down your thoughts here..."></textarea><br><br>
+      <button onclick="saveJournalEntry()">Save Journal</button>
+    </div>
+
+    <!-- Bedtime Story -->
+    <div class="story-buttons">
+      <h3>Bedtime Story</h3>
+      <button onclick="navigateTo('story1')">Story 1: The Tortoise and the Hare</button><br>
+      <button onclick="navigateTo('story2')">Story 2: The Lion and the Mouse</button><br>
+      <button onclick="navigateTo('story3')">Story 3: The Boy Who Cried Wolf</button><br>
+    </div>
+  </div>
+
+  <!-- Bottom Navigator -->
+  <div class="w3-bar w3-dark-grey w3-bottom w3-center">
+    <button class="w3-bar-item w3-button" onclick="navigateTo('index')">🏠 Home</button>
+    <button class="w3-bar-item w3-button" onclick="navigateTo('food')">🍲 Aaj Kya Khayein</button>
+    <button class="w3-bar-item w3-button" onclick="navigateTo('mini_monk')">🧘‍♂️ Mini Monk</button>
+    <button class="w3-bar-item w3-button" onclick="navigateTo('hydro')">💧 Hydro Buddy</button>
+    <button class="w3-bar-item w3-button" onclick="navigateTo('exercise')">💪 Exercise</button>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

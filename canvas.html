@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Drawing Pad</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="icon" href="favicon.jpeg" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 20px;
+    }
+    canvas {
+      border: 3px solid #444;
+      background-color: #fff;
+      margin-top: 20px;
+      cursor: crosshair;
+    }
+    .controls {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h2 class="w3-text-indigo">Draw Your Thoughts 🖌️</h2>
+
+  <div class="controls">
+    <label>🎨 Color:</label>
+    <input type="color" id="colorPicker" value="#000000">
+
+    <label>✏️ Brush Size:</label>
+    <input type="range" id="brushSize" min="1" max="30" value="5">
+
+    <button class="w3-button w3-red w3-round-large" onclick="clearCanvas()">🧼 Clear</button>
+  </div>
+
+  <canvas id="drawingCanvas" width="500" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById("drawingCanvas");
+    const ctx = canvas.getContext("2d");
+    let drawing = false;
+
+    // Drawing settings
+    let brushColor = document.getElementById("colorPicker").value;
+    let brushSize = document.getElementById("brushSize").value;
+
+    // Update color and size
+    document.getElementById("colorPicker").addEventListener("input", () => {
+      brushColor = document.getElementById("colorPicker").value;
+    });
+
+    document.getElementById("brushSize").addEventListener("input", () => {
+      brushSize = document.getElementById("brushSize").value;
+    });
+
+    canvas.addEventListener("mousedown", () => drawing = true);
+    canvas.addEventListener("mouseup", () => drawing = false);
+    canvas.addEventListener("mouseout", () => drawing = false);
+
+    canvas.addEventListener("mousemove", draw);
+
+    function draw(e) {
+      if (!drawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      ctx.fillStyle = brushColor;
+      ctx.beginPath();
+      ctx.arc(x, y, brushSize / 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  </script>
+  <div class="w3-bar w3-dark-grey w3-bottom w3-center">
+    <a href="index.html" class="w3-bar-item w3-button">🏠 Home</a>
+    <a href="food.html" class="w3-bar-item w3-button">🍽️ Aaj Kya Khayein</a>
+    <a href="mini_monk.html" class="w3-bar-item w3-button">🧘 Mini Monk</a>
+    <a href="hydro.html" class="w3-bar-item w3-button">💧 Hydro Buddy</a>
+    <a href="exercise.html" class="w3-bar-item w3-button">🤸 Exercise</a>
+    <a href="sleep.html" class="w3-bar-item w3-button">🌙 Sleep</a>
+  </div>
+  
+</body>
+</html>

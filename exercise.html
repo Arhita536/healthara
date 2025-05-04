@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercise - Wellness Buddy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.jpeg" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #f3f4f6;
+    }
+    .w3-container {
+      text-align: center;
+      padding: 40px;
+    }
+    .body-part-btns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    .body-part-btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      width: 200px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+    .body-part-btn:hover {
+      background-color: #45a049;
+      transform: translateY(-5px);
+    }
+    .asana-details {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .asana-details h3 {
+      font-size: 24px;
+      color: #2C8C99;
+    }
+    .asana-details p {
+      font-size: 18px;
+      color: #333;
+    }
+    .asana-details button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .asana-details button:hover {
+      background-color: #45a049;
+    }
+
+    /* Bottom Navigator */
+    .w3-bar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="w3-container">
+    <h2 class="w3-text-teal">Select a Body Part with Pain</h2>
+    <p>Click on the body part you want to relieve pain from, and we'll suggest a yoga pose for it.</p>
+
+    <div class="body-part-btns">
+      <button class="body-part-btn" onclick="displayAsana('neck')">Neck</button>
+      <button class="body-part-btn" onclick="displayAsana('back')">Back</button>
+      <button class="body-part-btn" onclick="displayAsana('shoulders')">Shoulders</button>
+      <button class="body-part-btn" onclick="displayAsana('legs')">Legs</button>
+      <button class="body-part-btn" onclick="displayAsana('arms')">Arms</button>
+      <button class="body-part-btn" onclick="displayAsana('waist')">Waist</button>
+      <button class="body-part-btn" onclick="displayAsana('hips')">Hips</button>
+      <button class="body-part-btn" onclick="displayAsana('knees')">Knees</button>
+      <button class="body-part-btn" onclick="displayAsana('ankles')">Ankles</button>
+      <button class="body-part-btn" onclick="displayAsana('elbows')">Elbows</button>
+    </div>
+
+    <div class="asana-details" id="asana-details" style="display: none;">
+      <h3 id="asana-name"></h3>
+      <p id="asana-description"></p>
+      <button onclick="navigateTo('home')">Back to Home</button>
+    </div>
+  </div>
+
+  <!-- Bottom Navigator -->
+  <div class="w3-bar w3-dark-grey w3-bottom w3-center">
+    <button class="w3-bar-item w3-button" onclick="navigateTo('index')">🏠 Home</button>
+    <button class="w3-bar-item w3-button" onclick="navigateTo('food')">🍲 Aaj Kya Khayein</button>
+    <button class="w3-bar-item w3-button" onclick="navigateTo('mini_monk')">🧘‍♀️ Mini Monk</button>
+    <button class="w3-bar-item w3-button" onclick="navigateTo('hydro')">💧 Hydro Buddy</button>
+    <button class="w3-bar-item w3-button" onclick="navigateTo('exercise')">💪 Exercise</button>
+    <button class="w3-bar-item w3-button" onclick="navigateTo('sleep')">💤 Sleep</button>
+  </div>
+
+  <script>
+    function displayAsana(bodyPart) {
+      let asanaName = '';
+      let asanaDescription = '';
+      
+      switch(bodyPart) {
+        case 'neck':
+          asanaName = 'Sukhasana (Easy Pose)';
+          asanaDescription = 'Sit cross-legged and relax your neck muscles. This helps relieve neck tension and calm the mind.';
+          break;
+        case 'back':
+          asanaName = 'Bhujangasana (Cobra Pose)';
+          asanaDescription = 'Lie on your stomach and lift your chest up using your arms, opening the chest and stretching the back.';
+          break;
+        case 'shoulders':
+          asanaName = 'Gomukhasana (Cow Face Pose)';
+          asanaDescription = 'Sit with legs crossed and bring your arms behind your back, interlocking your fingers to stretch the shoulders.';
+          break;
+        case 'legs':
+          asanaName = 'Trikonasana (Triangle Pose)';
+          asanaDescription = 'Spread your legs wide and reach towards the ground with one hand while extending the other arm upwards.';
+          break;
+        case 'arms':
+          asanaName = 'Adho Mukha Svanasana (Downward-Facing Dog)';
+          asanaDescription = 'This pose stretches your arms and legs, while also strengthening your core and improving flexibility.';
+          break;
+        case 'waist':
+          asanaName = 'Utkatasana (Chair Pose)';
+          asanaDescription = 'Bend your knees and hold your arms straight up, engaging your core to strengthen the waist and thighs.';
+          break;
+        case 'hips':
+          asanaName = 'Baddha Konasana (Bound Angle Pose)';
+          asanaDescription = 'Sit with your feet together and knees apart, holding your feet with your hands to open up the hips.';
+          break;
+        case 'knees':
+          asanaName = 'Virasana (Hero Pose)';
+          asanaDescription = 'Sit with your knees bent and feet underneath your body, resting your hips on the floor to stretch the knees.';
+          break;
+        case 'ankles':
+          asanaName = 'Ankle Stretch';
+          asanaDescription = 'Sit on the floor and stretch your legs out in front of you, pointing and flexing your ankles to relieve tension.';
+          break;
+        case 'elbows':
+          asanaName = 'Kneeling Pose';
+          asanaDescription = 'This gentle stretch targets the elbow joint, helping to release any stiffness or discomfort.';
+          break;
+        default:
+          asanaName = 'Unknown Body Part';
+          asanaDescription = 'Please select a valid body part.';
+      }
+
+      // Display the selected asana details
+      document.getElementById('asana-name').textContent = asanaName;
+      document.getElementById('asana-description').textContent = asanaDescription;
+      document.getElementById('asana-details').style.display = 'block';
+    }
+
+    function navigateTo(page) {
+      window.location.href = `${page}.html`; // Navigate to the homepage
+    }
+  </script>
+
+</body>
+</html>

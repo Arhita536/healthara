@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Monk - Mood-based Activities</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="icon" href="favicon.jpeg" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f4;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .mood-selection {
+      margin-top: 20px;
+    }
+    .mood-button {
+      margin: 10px;
+    }
+    .mood-button:hover {
+      background-color: #16a085;
+      color: white;
+    }
+    .music-section, .timer-section, .drawing-section {
+      margin-top: 20px;
+    }
+    .timer {
+      font-size: 2em;
+      color: #e74c3c;
+    }
+    #drawing-pad {
+      border: 2px solid #16a085;
+      width: 100%;
+      height: 300px;
+      background-color: #ecf0f1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Mini Monk 🧘‍♀️</h2>
+
+    <!-- Mood Selection -->
+    <div class="mood-selection">
+      <h3>Choose your mood:</h3>
+      <button class="w3-button w3-pale-green mood-button" onclick="setMood('calm')">Calm</button>
+      <button class="w3-button w3-pale-blue mood-button" onclick="setMood('stressed')">Stressed</button>
+      <button class="w3-button w3-pale-yellow mood-button" onclick="setMood('happy')">Happy</button>
+      <button class="w3-button w3-pale-red mood-button" onclick="setMood('anxious')">Anxious</button>
+      <button class="w3-button w3-pale-blue mood-button" onclick="setMood('tired')">Tired</button>
+      <button class="w3-button w3-pale-orange mood-button" onclick="setMood('excited')">Excited</button>
+      <button class="w3-button w3-pale-green mood-button" onclick="setMood('bored')">Bored</button>
+
+    </div>
+
+    <!-- Music Suggestions -->
+    <div class="music-section" id="music-section">
+      <h3>Suggested Music for Meditation:</h3>
+      <ul id="music-list"></ul>
+    </div>
+
+    <!-- Timer Section -->
+    <div class="timer-section">
+      <h3>Set Timer for Meditation:</h3>
+      <button class="w3-button w3-teal" onclick="startTimer(5)">5 Minutes</button>
+      <button class="w3-button w3-teal" onclick="startTimer(10)">10 Minutes</button>
+      <button class="w3-button w3-teal" onclick="startTimer(15)">15 Minutes</button>
+      <div class="timer" id="timer"></div>
+    </div>
+
+    <!-- Drawing Pad Section -->
+    <div class="drawing-section">
+      <h3>Want to draw? Relax and express your mood:</h3>
+      <button class="w3-button w3-teal" onclick="askToDraw()">Yes, I want to draw!</button>
+    </div>
+
+    <!-- Activity Suggestions based on Mood -->
+    <div class="activity-section" id="activity-section">
+      <h3>Suggested Activities:</h3>
+      <ul id="activity-list"></ul>
+    </div>
+  </div>
+
+  <script src="mini_monk.js"></script>
+  <audio id="endSound" src="alert.mp3" preload="auto"></audio>
+  <div class="w3-bar w3-dark-grey w3-bottom w3-center">
+    <a href="index.html" class="w3-bar-item w3-button">🏠 Home</a>
+    <a href="food.html" class="w3-bar-item w3-button">🍽️ Aaj Kya Khayein</a>
+    <a href="mini_monk.html" class="w3-bar-item w3-button">🧘 Mini Monk</a>
+    <a href="hydro.html" class="w3-bar-item w3-button">💧 Hydro Buddy</a>
+    <a href="exercise.html" class="w3-bar-item w3-button">🤸 Exercise</a>
+    <a href="sleep.html" class="w3-bar-item w3-button">🌙 Sleep</a>
+  </div>
+  
+
+</body>
+</html>
